@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewKundeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewKundeLabel_kundennummer}"/>
+                    <h:outputText value="#{kundeController.selected.kundennummer}" title="#{bundle.ViewKundeTitle_kundennummer}"/>
+                    <h:outputText value="#{bundle.ViewKundeLabel_vorname}"/>
+                    <h:outputText value="#{kundeController.selected.vorname}" title="#{bundle.ViewKundeTitle_vorname}"/>
+                    <h:outputText value="#{bundle.ViewKundeLabel_nachname}"/>
+                    <h:outputText value="#{kundeController.selected.nachname}" title="#{bundle.ViewKundeTitle_nachname}"/>
+                    <h:outputText value="#{bundle.ViewKundeLabel_gebDate}"/>
+                    <h:outputText value="#{kundeController.selected.gebDate}" title="#{bundle.ViewKundeTitle_gebDate}"/>
+                    <h:outputText value="#{bundle.ViewKundeLabel_plz}"/>
+                    <h:outputText value="#{kundeController.selected.plz}" title="#{bundle.ViewKundeTitle_plz}"/>
+                    <h:outputText value="#{bundle.ViewKundeLabel_city}"/>
+                    <h:outputText value="#{kundeController.selected.city}" title="#{bundle.ViewKundeTitle_city}"/>
+                    <h:outputText value="#{bundle.ViewKundeLabel_street}"/>
+                    <h:outputText value="#{kundeController.selected.street}" title="#{bundle.ViewKundeTitle_street}"/>
+                    <h:outputText value="#{bundle.ViewKundeLabel_houseNumber}"/>
+                    <h:outputText value="#{kundeController.selected.houseNumber}" title="#{bundle.ViewKundeTitle_houseNumber}"/>
+                    <h:outputText value="#{bundle.ViewKundeLabel_telefonNumber}"/>
+                    <h:outputText value="#{kundeController.selected.telefonNumber}" title="#{bundle.ViewKundeTitle_telefonNumber}"/>
+                    <h:outputText value="#{bundle.ViewKundeLabel_vertrag}"/>
+                    <h:outputText value="#{kundeController.selected.vertrag}" title="#{bundle.ViewKundeTitle_vertrag}"/>
+                    <h:outputText value="#{bundle.ViewKundeLabel_note}"/>
+                    <h:outputText value="#{kundeController.selected.note}" title="#{bundle.ViewKundeTitle_note}"/>
+                    <h:outputText value="#{bundle.ViewKundeLabel_gekuendigt}"/>
+                    <h:outputText value="#{kundeController.selected.gekuendigt}" title="#{bundle.ViewKundeTitle_gekuendigt}"/>
+                    <h:outputText value="#{bundle.ViewKundeLabel_vertragsbeginn}"/>
+                    <h:outputText value="#{kundeController.selected.vertragsbeginn}" title="#{bundle.ViewKundeTitle_vertragsbeginn}"/>
+                    <h:outputText value="#{bundle.ViewKundeLabel_bildpfad}"/>
+                    <h:outputText value="#{kundeController.selected.bildpfad}" title="#{bundle.ViewKundeTitle_bildpfad}"/>
+                    <h:outputText value="#{bundle.ViewKundeLabel_nichtGezahlt}"/>
+                    <h:outputText value="#{kundeController.selected.nichtGezahlt}" title="#{bundle.ViewKundeTitle_nichtGezahlt}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{kundeController.destroyAndView}" value="#{bundle.ViewKundeDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewKundeEditLink}"/>
+                <br />
+                <h:commandLink action="#{kundeController.prepareCreate}" value="#{bundle.ViewKundeCreateLink}" />
+                <br />
+                <h:commandLink action="#{kundeController.prepareList}" value="#{bundle.ViewKundeShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewKundeIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

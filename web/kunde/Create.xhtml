@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateKundeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                
+          
+                
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateKundeLabel_kundennummer}" for="kundennummer" />
+                    <h:inputText id="kundennummer" value="#{kundeController.selected.kundennummer}" title="#{bundle.CreateKundeTitle_kundennummer}" />
+                    <h:outputLabel value="#{bundle.CreateKundeLabel_vorname}" for="vorname" />
+                    <h:inputText id="vorname" value="#{kundeController.selected.vorname}" title="#{bundle.CreateKundeTitle_vorname}" />
+                    <h:outputLabel value="#{bundle.CreateKundeLabel_nachname}" for="nachname" />
+                    <h:inputText id="nachname" value="#{kundeController.selected.nachname}" title="#{bundle.CreateKundeTitle_nachname}" />
+                    <h:outputLabel value="#{bundle.CreateKundeLabel_gebDate}" for="gebDate" />
+                    <b:datepicker id="gebDate" value="#{kundeController.selected.gebDate}"/>
+                    <h:outputLabel value="#{bundle.CreateKundeLabel_plz}" for="plz" />
+                    <h:inputText id="plz" value="#{kundeController.selected.plz}" title="#{bundle.CreateKundeTitle_plz}" />
+                    <h:outputLabel value="#{bundle.CreateKundeLabel_city}" for="city" />
+                    <h:inputText id="city" value="#{kundeController.selected.city}" title="#{bundle.CreateKundeTitle_city}" />
+                    <h:outputLabel value="#{bundle.CreateKundeLabel_street}" for="street" />
+                    <h:inputText id="street" value="#{kundeController.selected.street}" title="#{bundle.CreateKundeTitle_street}" />
+                    <h:outputLabel value="#{bundle.CreateKundeLabel_houseNumber}" for="houseNumber" />
+                    <h:inputText id="houseNumber" value="#{kundeController.selected.houseNumber}" title="#{bundle.CreateKundeTitle_houseNumber}" />
+                    <h:outputLabel value="#{bundle.CreateKundeLabel_telefonNumber}" for="telefonNumber" />
+                    <h:inputText id="telefonNumber" value="#{kundeController.selected.telefonNumber}" title="#{bundle.CreateKundeTitle_telefonNumber}" />
+                    <h:outputLabel value="#{bundle.CreateKundeLabel_vertrag}" for="vertrag" />
+                    <h:inputText id="vertrag" value="#{kundeController.selected.vertrag}" title="#{bundle.CreateKundeTitle_vertrag}" />
+                    <h:outputLabel value="#{bundle.CreateKundeLabel_note}" for="note" />
+                    <h:inputText id="note" value="#{kundeController.selected.note}" title="#{bundle.CreateKundeTitle_note}" />
+                    <h:outputLabel value="#{bundle.CreateKundeLabel_gekuendigt}" for="gekuendigt" />
+                    <h:inputText id="gekuendigt" value="#{kundeController.selected.gekuendigt}" title="#{bundle.CreateKundeTitle_gekuendigt}" />
+                    <h:outputLabel value="#{bundle.CreateKundeLabel_vertragsbeginn}" for="vertragsbeginn" />
+                    <h:inputText id="vertragsbeginn" value="#{kundeController.selected.vertragsbeginn}" title="#{bundle.CreateKundeTitle_vertragsbeginn}" />
+                    <h:outputLabel value="#{bundle.CreateKundeLabel_bildpfad}" for="bildpfad" />
+                    <h:inputText id="bildpfad" value="#{kundeController.selected.bildpfad}" title="#{bundle.CreateKundeTitle_bildpfad}" />
+                    <h:outputLabel value="#{bundle.CreateKundeLabel_nichtGezahlt}" for="nichtGezahlt" />
+                    <h:inputText id="nichtGezahlt" value="#{kundeController.selected.nichtGezahlt}" title="#{bundle.CreateKundeTitle_nichtGezahlt}" />
+                    <!--<h:inputText id="gebDate" value="#{kundeController.selected.gebDate}" title="#{bundle.CreateKundeTitle_gebDate}" />-->
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{kundeController.create}" value="#{bundle.CreateKundeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{kundeController.prepareList}" value="#{bundle.CreateKundeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateKundeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

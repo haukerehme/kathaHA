@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListVertragTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+        <h:form styleClass="jsfcrud_list_form">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:outputText escape="false" value="#{bundle.ListVertragEmpty}" rendered="#{vertragController.items.rowCount == 0}"/>
+            
+
+            <h:panelGroup rendered="#{vertragController.items.rowCount > 0}">
+                <h:outputText value="#{vertragController.pagination.pageFirstItem + 1}..#{vertragController.pagination.pageLastItem + 1}/#{vertragController.pagination.itemsCount}"/>&nbsp;
+                <h:commandLink action="#{vertragController.previous}" value="#{bundle.Previous} #{vertragController.pagination.pageSize}" rendered="#{vertragController.pagination.hasPreviousPage}"/>&nbsp;
+                <h:commandLink action="#{vertragController.next}" value="#{bundle.Next} #{vertragController.pagination.pageSize}" rendered="#{vertragController.pagination.hasNextPage}"/>&nbsp;
+                <b:dataTable value="#{vertragController.items}" var="item" id="bcarPool" styleClass="table table-striped table-bordered" style="width:80%">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListVertragTitle_laufzeit}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.laufzeit}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListVertragTitle_name}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.name}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListVertragTitle_price}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.price}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListVertragTitle_firma}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.firma}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListVertragTitle_kuendigungsfrist}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.kuendigungsfrist}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListVertragTitle_id}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="&nbsp;"/>
+                        </f:facet>
+                        <h:commandLink action="#{vertragController.prepareView}" value=""><b:icon name="glyphicon glyphicon-zoom-in"/></h:commandLink>
+                        <h:outputText value=" "/>
+                        <h:commandLink action="#{vertragController.prepareEdit}" value="#{bundle.ListVertragEditLink}"/>
+                        <h:outputText value=" "/>
+                        <h:commandLink action="#{vertragController.destroy}" value="#{bundle.ListVertragDestroyLink}"/>
+                    </h:column>
+                </b:dataTable>
+            </h:panelGroup>
+            <br />
+            <h:commandLink action="#{vertragController.prepareCreate}" value="#{bundle.ListVertragCreateLink}"/>
+            <br />
+            <br />
+            <h:link outcome="/index" value="#{bundle.ListVertragIndexLink}"/>
+        </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
